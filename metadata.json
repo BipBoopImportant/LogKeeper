@@ -1,0 +1,5 @@
+{
+  "name": "Turmel Tracker",
+  "description": "Turmel Tracker, une application professionnelle de journal de bord pour véhicules d'entreprise, vous aide à suivre le kilométrage, à gérer plusieurs véhicules et à enregistrer facilement les trajets par rapport à des points de contrôle d'odomètre spécifiques.",
+  "requestFramePermissions": []
+}

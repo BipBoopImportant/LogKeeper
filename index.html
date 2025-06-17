@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turmel Tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'theme': {
+              'bg-default': '#FFFFFF',
+              'bg-subtle': '#F7F7F7', // For cards, modal backgrounds if differentiation needed
+              'bg-muted': '#F0F0F0', // Slightly more differentiated background
+              'text-default': '#1A1A1A', // Dark, almost black
+              'text-muted': '#737373', // Gray for secondary text
+              'text-subtle': '#A1A1A1', // Lighter gray for less emphasis
+              'border-default': '#E5E5E5', // Light gray for borders
+              'border-subtle': '#F0F0F0', // Even lighter border
+              'accent-blue': '#2563EB', // Primary accent (Tailwind blue-600)
+              'accent-blue-hover': '#1D4ED8', // Tailwind blue-700
+              'accent-blue-text': '#FFFFFF',
+              'accent-red': '#DC2626', // Danger accent (Tailwind red-600)
+              'accent-red-hover': '#B91C1C', // Tailwind red-700
+              'accent-red-text': '#FFFFFF',
+              'accent-red-bg-light': '#FEE2E2', // Tailwind red-100 for light backgrounds
+              'accent-red-text-on-light': '#991B1B', // Tailwind red-800 for text on light red
+              'accent-green': '#16A34A', // Success accent (Tailwind green-600)
+              'accent-green-text': '#FFFFFF',
+              'accent-green-bg-light': '#D1FAE5', // Tailwind green-100
+              'accent-green-text-on-light': '#065F46', // Tailwind green-800
+              'accent-yellow': '#D97706', // Warning accent (Tailwind amber-600) - Amber is better for text contrast
+              'accent-yellow-text': '#FFFFFF', // Or #422006 (amber-900) for contrast on yellow bg
+              'accent-yellow-bg-light': '#FEF3C7', // Tailwind amber-100
+              'accent-yellow-text-on-light': '#92400E', // Tailwind amber-800
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- jsPDF-AutoTable plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/"
+  }
+}
+</script>
+  <style>
+    body {
+      min-width: 320px; 
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F7F7F7; /* theme-bg-subtle */
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #E5E5E5; /* theme-border-default */
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #C7C7C7; /* Darker gray for hover */
+    }
+    ::selection {
+      background-color: #2563EB; /* theme-accent-blue */
+      color: #FFFFFF; 
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.01; /* Make it almost invisible but technically present */
+      background: transparent; /* Ensure no background color */
+      color: transparent; /* Ensure no icon color */
+      cursor: pointer; /* Can still be pointer if needed, but not necessary if input is primary target */
+      pointer-events: auto; /* Allow events if input itself isn't picking them up */
+      /* -webkit-appearance: none; and appearance: none; are on the input field itself. */
+    }
+    input[type="date"]::-webkit-inner-spin-button,
+    input[type="date"]::-webkit-clear-button {
+        display: none;
+        -webkit-appearance: none;
+    }
+    input[type="date"] {
+      -webkit-appearance: none; 
+      appearance: none;
+      position: relative; /* Important for the absolutely positioned indicator */
+    }
+  </style>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="h-full bg-theme-bg-default antialiased text-theme-text-default">
+  <div id="root" class="flex flex-col h-full"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
